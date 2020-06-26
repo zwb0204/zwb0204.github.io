@@ -2,9 +2,10 @@
 <search>
   <entry>
     <title>Hexo user guide</title>
-    <url>/2020/06/24/Hexo%20user%20guide/</url>
+    <url>/2020/06/26/Hexo%20user%20guide/</url>
     <content><![CDATA[<h1 id="Hexo-user-guide"><a href="#Hexo-user-guide" class="headerlink" title="Hexo user guide"></a>Hexo user guide</h1><p>[TOC]</p>
 <h2 id="Build-Private-Blog"><a href="#Build-Private-Blog" class="headerlink" title="Build Private Blog"></a>Build Private Blog</h2><p>搭建过程参考文章：<a href="https://zhuanlan.zhihu.com/p/32957389" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/32957389</a> </p>
+<p>个人域名在阿里云申请的</p>
 <a id="more"></a>
 
 <h2 id="USER-Guide"><a href="#USER-Guide" class="headerlink" title="USER Guide"></a>USER Guide</h2><ul>
@@ -18,13 +19,30 @@
 </ul>
 </li>
 </ul>
+<blockquote>
+<p>修改完主题完配置后，最好先执行 hexo clean </p>
+</blockquote>
 <h2 id="网页优化"><a href="#网页优化" class="headerlink" title="网页优化"></a>网页优化</h2><ul>
 <li><p>首页不要显示全文</p>
-<p>在文档中截取需要预览的部分：  &lt;!- - more - -&gt;</p>
-<h2 id="网站浏览"><a href="#网站浏览" class="headerlink" title="网站浏览"></a>网站浏览</h2></li>
+<p>在文档中截取需要预览的部分, 文章之后输入：  </p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">&lt;!-- more --&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
 </ul>
-<p>个人博客地址：<a href="https://zwb0204.github.io" target="_blank" rel="noopener">https://zwb0204.github.io</a></p>
+<ul>
+<li>例如代码块复制，增加分页等优化功能，7.8.0版本都已经集合，只需在主题配置中将该部分的功能设定改为enable：true</li>
+</ul>
+<h2 id="更换电脑"><a href="#更换电脑" class="headerlink" title="更换电脑"></a>更换电脑</h2><p>如果更换电脑后，怎么重新配置呢？待续…</p>
+<h2 id="网站浏览"><a href="#网站浏览" class="headerlink" title="网站浏览"></a>网站浏览</h2><p>个人博客地址：<a href="www.bluetoothspace.com">蓝牙空间</a></p>
 ]]></content>
+      <categories>
+        <category>tool</category>
+      </categories>
+      <tags>
+        <tag>life</tag>
+      </tags>
   </entry>
   <entry>
     <title>QCC MDE 开发初窥（一）</title>
