@@ -35,11 +35,11 @@
   </entry>
   
   <entry>
-    <title>QCC MDE 开发初窥(一)</title>
+    <title>QCC MDE 开发初窥（一）</title>
     <link href="http://yoursite.com/2020/06/24/QCC%20MDE%20%E5%BC%80%E5%8F%91%E5%88%9D%E7%AA%A5(%E4%B8%80)/"/>
     <id>http://yoursite.com/2020/06/24/QCC%20MDE%20%E5%BC%80%E5%8F%91%E5%88%9D%E7%AA%A5(%E4%B8%80)/</id>
     <published>2020-06-24T02:21:10.236Z</published>
-    <updated>2020-06-26T04:12:28.315Z</updated>
+    <updated>2020-06-26T05:10:14.189Z</updated>
     
     <summary type="html">
     
@@ -49,6 +49,8 @@
     </summary>
     
     
+    
+      <category term="technology" scheme="http://yoursite.com/tags/technology/"/>
     
   </entry>
   
