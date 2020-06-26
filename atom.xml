@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Blutooth Space</title>
+  <title>Bluetooth Space</title>
   <icon>https://www.gravatar.com/avatar/ea591456c5a5d20e18964fe7564b20be</icon>
   <subtitle>bluetooth technolgoy &amp; development</subtitle>
   <link href="/atom.xml" rel="self"/>
