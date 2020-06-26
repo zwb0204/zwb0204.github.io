@@ -20,10 +20,12 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="website">
+  <meta name="description" content="Bluetooth old man">
+<meta property="og:type" content="website">
 <meta property="og:title" content="Blutooth Space">
 <meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="Blutooth Space">
+<meta property="og:description" content="Bluetooth old man">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="Harry Zhang">
 <meta name="twitter:card" content="summary">
@@ -180,7 +182,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Harry Zhang">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="Bluetooth old man">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -206,7 +208,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-26 09:41:15" itemprop="dateModified" datetime="2020-06-26T09:41:15+08:00">2020-06-26</time>
+                <time title="修改时间：2020-06-26 12:29:37" itemprop="dateModified" datetime="2020-06-26T12:29:37+08:00">2020-06-26</time>
               </span>
 
           
@@ -236,22 +238,14 @@
       
           <h1 id="Hexo-user-guide"><a href="#Hexo-user-guide" class="headerlink" title="Hexo user guide"></a>Hexo user guide</h1><p>[TOC]</p>
 <h2 id="Build-Private-Blog"><a href="#Build-Private-Blog" class="headerlink" title="Build Private Blog"></a>Build Private Blog</h2><p>搭建过程参考文章：<a href="https://zhuanlan.zhihu.com/p/32957389" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/32957389</a> </p>
-<h2 id="USER-Guide"><a href="#USER-Guide" class="headerlink" title="USER Guide"></a>USER Guide</h2><ul>
-<li><p>更新个人信息，在根目录的_config.yml 中更新博客名字，作者，git 仓库地址等等。</p>
-</li>
-<li><p>将写好的文章直接放在目录：source/_posts下面</p>
-</li>
-<li><p>使用命令：</p>
-<ul>
-<li>hexo g    // 如果有变动，执行命令生成</li>
-<li>hexo s    // 本地预览命令</li>
-<li>hexo server -p 5000 // 如果4000端口被占用，则使用此命令更换端口</li>
-<li>hexo d    // commit 本地改动到github</li>
-</ul>
-<h2 id="网站浏览"><a href="#网站浏览" class="headerlink" title="网站浏览"></a>网站浏览</h2></li>
-</ul>
-<p>个人博客地址：<a href="https://zwb0204.github.io" target="_blank" rel="noopener">https://zwb0204.github.io</a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/06/24/Hexo%20user%20guide/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -275,7 +269,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Harry Zhang">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="Bluetooth old man">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -301,7 +295,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-23 22:48:38" itemprop="dateModified" datetime="2020-06-23T22:48:38+08:00">2020-06-23</time>
+                <time title="修改时间：2020-06-26 12:12:28" itemprop="dateModified" datetime="2020-06-26T12:12:28+08:00">2020-06-26</time>
               </span>
 
           
@@ -331,51 +325,14 @@
       
           <h1 id="QCC-MDE-开发初窥-一"><a href="#QCC-MDE-开发初窥-一" class="headerlink" title="QCC MDE 开发初窥(一)"></a>QCC MDE 开发初窥(一)</h1><p>[TOC]</p>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>QCC收购CSR之后，将SDK的架构进行了大改，从ADK6.x 版本开始，使用的IDE是MDE+Toolkit ,对于基于CSR 时代的软件开发者来说，需要重新学习，我后续将QCC平台的开发心得一一阐述，节约开发者的学习成本。</p>
-<h2 id="开发环境安装"><a href="#开发环境安装" class="headerlink" title="开发环境安装"></a>开发环境安装</h2><p>安装包包含以下三部分,按照安装步骤安装即可：</p>
-<ul>
-<li><p>开发包目前有两种：基于QCC512x_QCC302x芯片平台的使用ADK_QCC512x_QCC302x_WIN_6.4.2.26; 基于QCC514x_QCC304x芯片平台的使用ADK_Tookkit_1.0.1.19 + qcc514x-qcc304x-src-1-0_qtil_standard_oem_earbud.git. </p>
-</li>
-<li><p>开发IDE都使用MDE_WIN_2.4.1.4</p>
-</li>
-<li><p>Bluesuit3.3.2</p>
-</li>
-</ul>
-<p><strong>注意 ：安装成功后，python的安装程序已经包含在ADK_QCC512X_QCC302X_WIN_6.4.2.26\tools\python27中，如果是Toolkit ,则包含在：</strong></p>
-<p><strong>ADK_Toolkit_1.0.1.19_x64\tools\python27\，无需下载python安装包进行安装。</strong></p>
-<h2 id="开发环境配置和TRBI200连线"><a href="#开发环境配置和TRBI200连线" class="headerlink" title="开发环境配置和TRBI200连线"></a>开发环境配置和TRBI200连线</h2><ul>
-<li><p>安装完毕之后，需要在python中配置默认字体encoding为gbk, 以ADK_Toolkit_1.0.1.19为例，修改步骤如下：</p>
-<p>在..\ADK_Toolkit_1.0.1.19_x64\tools\python27\Lib\site-packages\中新建文件：sitecustomize.py,  输入代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">inport sys </span><br><span class="line"></span><br><span class="line">reload(sys)</span><br><span class="line">sys.setdefaultencoding(‘gbk’)</span><br></pre></td></tr></table></figure>
-
-<p><strong>解决问题：如果不修改程gbk， 在log输出的时候会遇到无法解析的问题。</strong></p>
-</li>
-<li><p>在工程配置文件中，需要remove 5个宏定义：</p>
-<p>![image-20200623214923992](C:\Users\Harry zhang\AppData\Roaming\Typora\typora-user-images\image-20200623214923992.png)</p>
-<p><strong>解决问题：如果电路中没有温度检测电路的话，运行默认程序会造成通信dead, 程序无法正常运行。</strong></p>
-</li>
-<li><p>TRBI200 接口连接注意事项</p>
-<p>TRBI200的16PIN接口分布如下图右下角所示，TRBI200中只需接四个接口中的一个接口即可，另外加TX_CLK, VCC(1.8V or 3.3V), GND 一共5pin ，速度可以达到10MHz, 判断传输通道是否OK，可以观察以下几个LEDS是否常亮: STATUS, TRB SE, TRB SE VCC。</p>
-<p>![image-20200623220346476](C:\Users\Harry zhang\AppData\Roaming\Typora\typora-user-images\image-20200623220346476.png)</p>
-</li>
-</ul>
-<h2 id="编译，烧录，输出调试信息"><a href="#编译，烧录，输出调试信息" class="headerlink" title="编译，烧录，输出调试信息"></a>编译，烧录，输出调试信息</h2><ul>
-<li>编译，烧录，输出调试信息全部可以通过MDE完成，步骤见下图所示，烧录的的时候注意，一定要将SYS_CTRL脚拉高hold住。</li>
-</ul>
-<p>![image-20200623222238549](C:\Users\Harry zhang\AppData\Roaming\Typora\typora-user-images\image-20200623222238549.png)</p>
-<ul>
-<li><p>更改log leve ,默认的log level 是2， 即DEBUG_LOG_LEVEL_INFO。 使用的调试输出代码格式：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DEBUG_LOG_INFO(<span class="string">"handleMessageAppInitStart"</span>);</span><br></pre></td></tr></table></figure>
-
-<p>如要改成其他的log level , 则在项目属性中定义宏：SET_LOG_LEVEL=x , x对应以下枚举值：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">enum</span> &#123;</span><br><span class="line">    DEBUG_LOG_LEVEL_ERROR,</span><br><span class="line">    DEBUG_LOG_LEVEL_WARN,</span><br><span class="line">    DEBUG_LOG_LEVEL_INFO,</span><br><span class="line">    DEBUG_LOG_LEVEL_DEBUG,</span><br><span class="line">    DEBUG_LOG_LEVEL_VERBOSE,</span><br><span class="line">    DEBUG_LOG_LEVEL_V_VERBOSE,</span><br><span class="line">&#125; <span class="keyword">debug_log_level_t</span>;</span><br></pre></td></tr></table></figure>
-
-<p>对应的调试代码为：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DEBUG_LOG_ERROR(...)     </span><br><span class="line">DEBUG_LOG_WARN(...)      </span><br><span class="line">DEBUG_LOG_INFO(...)      </span><br><span class="line">DEBUG_LOG_DEBUG(...)     </span><br><span class="line">DEBUG_LOG_VERBOSE(...)   </span><br><span class="line">DEBUG_LOG_V_VERBOSE(...)</span><br></pre></td></tr></table></figure>
-
-<p>至此，你已经可以拿到板子正常运行程序，并且进行代码调试了。</p>
-</li>
-</ul>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/06/24/QCC%20MDE%20%E5%BC%80%E5%8F%91%E5%88%9D%E7%AA%A5(%E4%B8%80)/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -449,7 +406,7 @@
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <p class="site-author-name" itemprop="name">Harry Zhang</p>
-  <div class="site-description" itemprop="description"></div>
+  <div class="site-description" itemprop="description">Bluetooth old man</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -492,6 +449,26 @@
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
+
+<!-- 网站运行时间的设置 -->
+<span id="timeDate">载入天数...</span>
+<span id="times">载入时分秒...</span>  每天改进一点点.
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("06/24/2020 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+}
+setInterval("createtime()",250);
+</script>
 
         
 
