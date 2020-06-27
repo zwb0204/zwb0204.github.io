@@ -1,6 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Markdwon 常用语法</title>
+    <url>/2020/06/27/Markdwon%20%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/</url>
+    <content><![CDATA[<p>[TOC]</p>
+<p>我写作使用的工具是<a href="https://www.typora.io/" target="_blank" rel="noopener">Typora</a>，免费，且方便快捷的集合了一些语法，以下的操作都是基于<a href="https://www.typora.io/" target="_blank" rel="noopener">Typora</a> 工具的，写一篇文章足够。</p>
+<a id="more"></a>
+
+<ul>
+<li><p>分级标题，一共六级</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 		一级标题</span><br><span class="line">## 		二级标题</span><br><span class="line">....</span><br><span class="line">###### 	六级标题</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>列表</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- 文本</span><br></pre></td></tr></table></figure></code></pre></li>
+<li><p>代码段</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">​&#96;&#96;&#96;c &#x2F;&#x2F; 输入此内容，自动变为代码块</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>引用</p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt; 文本</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>插入链接</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[文本]（www.example.com）</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>待办事项</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- [x] 文本  &#x2F;&#x2F; 括号内需空格或者x</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字体</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x3D;&#x3D;文本&#x3D;&#x3D;   &#x2F;&#x2F; 高亮</span><br><span class="line">*文本*     &#x2F;&#x2F; 斜体</span><br><span class="line">**文本**   &#x2F;&#x2F; 加粗</span><br><span class="line">***文本*** &#x2F;&#x2F; 斜体加粗</span><br><span class="line">&#96;文本&#96;     &#x2F;&#x2F; 加背景</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>待续。。。</p>
+]]></content>
+      <categories>
+        <category>tool</category>
+      </categories>
+      <tags>
+        <tag>life</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo user guide</title>
+    <url>/2020/06/26/Hexo%20user%20guide/</url>
+    <content><![CDATA[<p>[TOC]</p>
+<h2 id="Build-Private-Blog"><a href="#Build-Private-Blog" class="headerlink" title="Build Private Blog"></a>Build Private Blog</h2><p>搭建过程参考文章：<a href="https://zhuanlan.zhihu.com/p/32957389" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/32957389</a> </p>
+<p>个人域名在阿里云申请的</p>
+<a id="more"></a>
+
+<h2 id="USER-Guide"><a href="#USER-Guide" class="headerlink" title="USER Guide"></a>USER Guide</h2><ul>
+<li>更新个人信息，在根目录的_config.yml 中更新博客名字，作者，git 仓库地址等等。</li>
+<li>将写好的文章直接放在目录：source/_posts下面</li>
+<li>使用命令：<ul>
+<li>hexo g    // 如果有变动，执行命令生成</li>
+<li>hexo s    // 本地预览命令</li>
+<li>hexo server -p 5000 // 如果4000端口被占用，则使用此命令更换端口</li>
+<li>hexo d    // commit 本地改动到github</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>修改完主题完配置后，最好先执行 hexo clean </p>
+</blockquote>
+<h2 id="网页优化"><a href="#网页优化" class="headerlink" title="网页优化"></a>网页优化</h2><ul>
+<li><p>首页不要显示全文</p>
+<p>在文档中截取需要预览的部分, 文章之后输入：  </p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">&lt;!-- more --&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li>例如代码块复制，增加分页等优化功能，7.8.0版本都已经集合，只需在主题配置中将该部分的功能设定改为enable：true</li>
+</ul>
+<h2 id="更换电脑"><a href="#更换电脑" class="headerlink" title="更换电脑"></a>更换电脑</h2><p>如果更换电脑后，怎么重新配置呢？待续…</p>
+<h2 id="网站浏览"><a href="#网站浏览" class="headerlink" title="网站浏览"></a>网站浏览</h2><p>个人博客地址：<a href="www.bluetoothspace.com">蓝牙空间</a></p>
+]]></content>
+      <categories>
+        <category>tool</category>
+      </categories>
+      <tags>
+        <tag>life</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>QCC MDE 开发初窥（一）</title>
     <url>/2020/06/24/QCC%20MDE%20%E5%BC%80%E5%8F%91%E5%88%9D%E7%AA%A5(%E4%B8%80)/</url>
     <content><![CDATA[<h1 id="QCC-MDE-开发初窥-一"><a href="#QCC-MDE-开发初窥-一" class="headerlink" title="QCC MDE 开发初窥(一)"></a>QCC MDE 开发初窥(一)</h1><p>[TOC]</p>
@@ -57,47 +142,6 @@
       </categories>
       <tags>
         <tag>technology</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Markdwon 常用语法</title>
-    <url>/2020/06/27/Markdwon%20%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/</url>
-    <content><![CDATA[<p>[TOC]</p>
-<p>我写作使用的工具是<a href="https://www.typora.io/" target="_blank" rel="noopener">Typora</a>，免费，且方便快捷的集合了一些语法，以下的操作都是基于<a href="https://www.typora.io/" target="_blank" rel="noopener">Typora</a> 工具的，写一篇文章足够。</p>
-<a id="more"></a>
-
-<ul>
-<li><p>分级标题，一共六级</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 		一级标题</span><br><span class="line">## 		二级标题</span><br><span class="line">....</span><br><span class="line">###### 	六级标题</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>列表</p>
-<pre><code><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- 文本</span><br></pre></td></tr></table></figure></code></pre></li>
-<li><p>代码段</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">​&#96;&#96;&#96;c &#x2F;&#x2F; 输入此内容，自动变为代码块</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>引用</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt; 文本</span><br></pre></td></tr></table></figure>
-</blockquote>
-</li>
-<li><p>插入链接</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[文本]（www.example.com）</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>待办事项</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- [x] 文本  &#x2F;&#x2F; 括号内需空格或者x</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>字体</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x3D;&#x3D;文本&#x3D;&#x3D;   &#x2F;&#x2F; 高亮</span><br><span class="line">*文本*     &#x2F;&#x2F; 斜体</span><br><span class="line">**文本**   &#x2F;&#x2F; 加粗</span><br><span class="line">***文本*** &#x2F;&#x2F; 斜体加粗</span><br><span class="line">&#96;文本&#96;     &#x2F;&#x2F; 加背景</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>待续。。。</p>
-]]></content>
-      <categories>
-        <category>tool</category>
-      </categories>
-      <tags>
-        <tag>life</tag>
       </tags>
   </entry>
 </search>
