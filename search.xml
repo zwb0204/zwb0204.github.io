@@ -108,6 +108,8 @@
     <url>/2020/06/27/Markdwon%20%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/</url>
     <content><![CDATA[<p>[TOC]</p>
 <p>我写作使用的工具是<a href="https://www.typora.io/" target="_blank" rel="noopener">Typora</a>，免费，且方便快捷的集合了一些语法，以下的操作都是基于<a href="https://www.typora.io/" target="_blank" rel="noopener">Typora</a> 工具的，写一篇文章足够。</p>
+<a id="more"></a>
+
 <ul>
 <li><p>分级标题，一共六级</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 		一级标题</span><br><span class="line">## 		二级标题</span><br><span class="line">....</span><br><span class="line">###### 	六级标题</span><br></pre></td></tr></table></figure>
