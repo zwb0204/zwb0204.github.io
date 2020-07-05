@@ -20,20 +20,22 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="QCC MDE 开发初窥(一)[TOC] 前言QCC收购CSR之后，将SDK的架构进行了大改，从ADK6.x 版本开始，使用的IDE是MDE+Toolkit ,对于基于CSR 时代的软件开发者来说，需要重新学习，我后续将QCC平台的开发心得一一阐述，节约开发者的学习成本。">
+  <meta name="description" content="[TOC] 前言搭建好开发环境，输出log 信息之后，在阅读代码过程中发现，新的软件架构在task ,message方面，新增了一些应用，例如message_boker, Task list之类的。本文就针对新增的message , task list的原理做一个阐述">
 <meta property="og:type" content="article">
-<meta property="og:title" content="QCC MDE 开发初窥（一）">
-<meta property="og:url" content="http://yoursite.com/2020/06/24/QCC%20MDE%20%E5%BC%80%E5%8F%91%E5%88%9D%E7%AA%A5(%E4%B8%80)/index.html">
+<meta property="og:title" content="QCC MDE 开发初窥(二)">
+<meta property="og:url" content="http://yoursite.com/2020/07/04/QCC%20MDE%20%E5%BC%80%E5%8F%91%E5%88%9D%E7%AA%A5(%E4%BA%8C)/index.html">
 <meta property="og:site_name" content="Bluetooth Space IDH">
-<meta property="og:description" content="QCC MDE 开发初窥(一)[TOC] 前言QCC收购CSR之后，将SDK的架构进行了大改，从ADK6.x 版本开始，使用的IDE是MDE+Toolkit ,对于基于CSR 时代的软件开发者来说，需要重新学习，我后续将QCC平台的开发心得一一阐述，节约开发者的学习成本。">
+<meta property="og:description" content="[TOC] 前言搭建好开发环境，输出log 信息之后，在阅读代码过程中发现，新的软件架构在task ,message方面，新增了一些应用，例如message_boker, Task list之类的。本文就针对新增的message , task list的原理做一个阐述">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-06-24T02:21:10.236Z">
-<meta property="article:modified_time" content="2020-06-26T05:16:15.555Z">
+<meta property="og:image" content="http://yoursite.com/2020/07/04/QCC%20MDE%20%E5%BC%80%E5%8F%91%E5%88%9D%E7%AA%A5(%E4%BA%8C)/task_list_struct.png">
+<meta property="article:published_time" content="2020-07-04T14:28:22.877Z">
+<meta property="article:modified_time" content="2020-07-05T10:18:14.203Z">
 <meta property="article:author" content="Harry Zhang">
 <meta property="article:tag" content="technology">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/07/04/QCC%20MDE%20%E5%BC%80%E5%8F%91%E5%88%9D%E7%AA%A5(%E4%BA%8C)/task_list_struct.png">
 
-<link rel="canonical" href="http://yoursite.com/2020/06/24/QCC%20MDE%20%E5%BC%80%E5%8F%91%E5%88%9D%E7%AA%A5(%E4%B8%80)/">
+<link rel="canonical" href="http://yoursite.com/2020/07/04/QCC%20MDE%20%E5%BC%80%E5%8F%91%E5%88%9D%E7%AA%A5(%E4%BA%8C)/">
 
 
 <script id="page-configurations">
@@ -46,7 +48,7 @@
   };
 </script>
 
-  <title>QCC MDE 开发初窥（一） | Bluetooth Space IDH</title>
+  <title>QCC MDE 开发初窥(二) | Bluetooth Space IDH</title>
   
 
 
@@ -196,7 +198,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/24/QCC%20MDE%20%E5%BC%80%E5%8F%91%E5%88%9D%E7%AA%A5(%E4%B8%80)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/04/QCC%20MDE%20%E5%BC%80%E5%8F%91%E5%88%9D%E7%AA%A5(%E4%BA%8C)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -209,7 +211,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          QCC MDE 开发初窥（一）
+          QCC MDE 开发初窥(二)
         </h1>
 
         <div class="post-meta">
@@ -219,14 +221,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-06-24 10:21:10" itemprop="dateCreated datePublished" datetime="2020-06-24T10:21:10+08:00">2020-06-24</time>
+              <time title="创建时间：2020-07-04 22:28:22" itemprop="dateCreated datePublished" datetime="2020-07-04T22:28:22+08:00">2020-07-04</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-26 13:16:15" itemprop="dateModified" datetime="2020-06-26T13:16:15+08:00">2020-06-26</time>
+                <time title="修改时间：2020-07-05 18:18:14" itemprop="dateModified" datetime="2020-07-05T18:18:14+08:00">2020-07-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -254,8 +256,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2020/06/24/QCC%20MDE%20%E5%BC%80%E5%8F%91%E5%88%9D%E7%AA%A5(%E4%B8%80)/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/06/24/QCC%20MDE%20%E5%BC%80%E5%8F%91%E5%88%9D%E7%AA%A5(%E4%B8%80)/" itemprop="commentCount"></span>
+    <a title="valine" href="/2020/07/04/QCC%20MDE%20%E5%BC%80%E5%8F%91%E5%88%9D%E7%AA%A5(%E4%BA%8C)/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/07/04/QCC%20MDE%20%E5%BC%80%E5%8F%91%E5%88%9D%E7%AA%A5(%E4%BA%8C)/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -265,14 +267,14 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.9k</span>
+              <span>4.1k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+              <span>4 分钟</span>
             </span>
 
         </div>
@@ -284,52 +286,70 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="QCC-MDE-开发初窥-一"><a href="#QCC-MDE-开发初窥-一" class="headerlink" title="QCC MDE 开发初窥(一)"></a>QCC MDE 开发初窥(一)</h1><p>[TOC]</p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>QCC收购CSR之后，将SDK的架构进行了大改，从ADK6.x 版本开始，使用的IDE是MDE+Toolkit ,对于基于CSR 时代的软件开发者来说，需要重新学习，我后续将QCC平台的开发心得一一阐述，节约开发者的学习成本。</p>
+        <p>[TOC]</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>搭建好开发环境，输出log 信息之后，在阅读代码过程中发现，新的软件架构在task ,message方面，新增了一些应用，例如message_boker, Task list之类的。本文就针对新增的message , task list的原理做一个阐述</p>
 <a id="more"></a>
 
-<h2 id="开发环境安装"><a href="#开发环境安装" class="headerlink" title="开发环境安装"></a>开发环境安装</h2><p>安装包包含以下三部分,按照安装步骤安装即可：</p>
+<h2 id="MESSAGE-BASE-amp-MESSAGE-GROUP"><a href="#MESSAGE-BASE-amp-MESSAGE-GROUP" class="headerlink" title="MESSAGE_BASE &amp; MESSAGE_GROUP"></a>MESSAGE_BASE &amp; MESSAGE_GROUP</h2><p>在代码中出现了诸如<code>LOGIC_INPUT_MESSAGE_BASE</code> , <code>UI_TELEPHONY_MESSAGE_GROUP</code> 之类的，搜寻代码，无法找到它们这些消息ID的定义，其实这些定义都在<code>domain_message.h</code> 中已经定义，详情如下：</p>
 <ul>
-<li><p>开发包目前有两种：基于QCC512x_QCC302x芯片平台的使用ADK_QCC512x_QCC302x_WIN_6.4.2.26; 基于QCC514x_QCC304x芯片平台的使用ADK_Tookkit_1.0.1.19 + qcc514x-qcc304x-src-1-0_qtil_standard_oem_earbud.git. </p>
+<li><p>首先了解<code>xx_MESSAGE_GROUP</code> 和<code>xx_MESSAGE_BASE</code> 之间的关系</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xx_MESSAGE_GROUP =  xx_MESSAGE_BASE &lt;&lt; <span class="number">8</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>开发IDE都使用MDE_WIN_2.4.1.4</p>
-</li>
-<li><p>Bluesuit3.3.2</p>
-</li>
-</ul>
-<p><strong>注意 ：安装成功后，python的安装程序已经包含在ADK_QCC512X_QCC302X_WIN_6.4.2.26\tools\python27中，如果是Toolkit ,则包含在：</strong></p>
-<p><strong>ADK_Toolkit_1.0.1.19_x64\tools\python27\，无需下载python安装包进行安装。</strong></p>
-<h2 id="开发环境配置和TRBI200连线"><a href="#开发环境配置和TRBI200连线" class="headerlink" title="开发环境配置和TRBI200连线"></a>开发环境配置和TRBI200连线</h2><ul>
-<li><p>安装完毕之后，需要在python中配置默认字体encoding为gbk, 以ADK_Toolkit_1.0.1.19为例，修改步骤如下：</p>
-<p>在..\ADK_Toolkit_1.0.1.19_x64\tools\python27\Lib\site-packages\中新建文件：sitecustomize.py,  输入代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">inport sys </span><br><span class="line"></span><br><span class="line">reload(sys)</span><br><span class="line">sys.setdefaultencoding(‘gbk’)</span><br></pre></td></tr></table></figure>
+<li><p>所有的<code>MESSAGE_GROUP</code>的定义</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> message_groups</span><br><span class="line">&#123;</span><br><span class="line">    FOREACH_DOMAINS_MESSAGE_GROUP(EXPAND_AS_MESSAGE_GROUP_ENUM)</span><br><span class="line">    FOREACH_SERVICES_MESSAGE_GROUP(EXPAND_AS_MESSAGE_GROUP_ENUM)</span><br><span class="line">    FOREACH_TOPOLOGY_MESSAGE_GROUP(EXPAND_AS_MESSAGE_GROUP_ENUM)</span><br><span class="line">    FOREACH_APPS_MESSAGE_GROUP(EXPAND_AS_MESSAGE_GROUP_ENUM)</span><br><span class="line">    FOREACH_UI_INPUTS_MESSAGE_GROUP(EXPAND_AS_MESSAGE_GROUP_ENUM)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p><strong>解决问题：如果不修改程gbk， 在log输出的时候会遇到无法解析的问题。</strong></p>
+<p>它等价于如下代码,具体的细节查看<code>domain_message.h</code> ：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> message_groups</span><br><span class="line">&#123;</span><br><span class="line">    INTERNAL_MESSAGE_GROUP,</span><br><span class="line">    AV_MESSAGE_GROUP,                   <span class="comment">/* See #av_status_messages */</span> \                   ................................................................</span><br><span class="line">    LEAKTHROUGH_MESSAGE_GROUP,                <span class="comment">/* See leakthrough_msg_t */</span>\</span><br><span class="line">    QCOM_CON_MANAGER_MESSAGE_GROUP, </span><br><span class="line">    </span><br><span class="line">    HANDSET_SERVICE_MESSAGE_GROUP,</span><br><span class="line">    ............................  </span><br><span class="line">    AUDIO_CURATION_SERVICE_MESSAGE_GROUP,</span><br><span class="line">    </span><br><span class="line">    TWS_TOPOLOGY_SERVICE_MESSAGE_GROUP,     <span class="comment">/* See #tws_topology_message_t */</span> \</span><br><span class="line">    TWS_TOPOLOGY_CLIENT_NOTIFIER_SERVICE_MESSAGE_GROUP, </span><br><span class="line">    HEADSET_TOPOLOGY_SERVICE_MESSAGE_GROUP,</span><br><span class="line">    </span><br><span class="line">    SYSTEM_SERVICE_MESSAGE_GROUP,</span><br><span class="line">    CONN_RULES_SERVICE_MESSAGE_GROUP,</span><br><span class="line">    EARBUD_ROLE_SERVICE_MESSAGE_GROUP,</span><br><span class="line">    </span><br><span class="line">    UI_INPUTS_TELEPHONY_MESSAGE_GROUP,</span><br><span class="line">    .................................</span><br><span class="line">    UI_INPUTS_BOUNDS_CHECK_MESSAGE_GROUP</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>在工程配置文件中，需要remove 5个宏定义：</p>
-<p>![image-20200623214923992](C:\Users\Harry zhang\AppData\Roaming\Typora\typora-user-images\image-20200623214923992.png)</p>
-<p><strong>解决问题：如果电路中没有温度检测电路的话，运行默认程序会造成通信dead, 程序无法正常运行。</strong></p>
-</li>
-<li><p>TRBI200 接口连接注意事项</p>
-<p>TRBI200的16PIN接口分布如下图右下角所示，TRBI200中只需接四个接口中的一个接口即可，另外加TX_CLK, VCC(1.8V or 3.3V), GND 一共5pin ，速度可以达到10MHz, 判断传输通道是否OK，可以观察以下几个LEDS是否常亮: STATUS, TRB SE, TRB SE VCC。</p>
-<p>![image-20200623220346476](C:\Users\Harry zhang\AppData\Roaming\Typora\typora-user-images\image-20200623220346476.png)</p>
+<li><p><code>MESSAGE_GROUP</code> 的值确定了，那么每个group的<code>MESSAGE_BASE</code>值也随之确认</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">enum</span></span><br><span class="line">&#123;</span><br><span class="line">    FOREACH_DOMAINS_MESSAGE_GROUP(EXPAND_AS_MESSAGE_BASE_ENUM)</span><br><span class="line">    FOREACH_SERVICES_MESSAGE_GROUP(EXPAND_AS_MESSAGE_BASE_ENUM)</span><br><span class="line">    FOREACH_TOPOLOGY_MESSAGE_GROUP(EXPAND_AS_MESSAGE_BASE_ENUM)</span><br><span class="line">    FOREACH_APPS_MESSAGE_GROUP(EXPAND_AS_MESSAGE_BASE_ENUM)</span><br><span class="line">    FOREACH_UI_INPUTS_MESSAGE_GROUP(EXPAND_AS_MESSAGE_BASE_ENUM)</span><br><span class="line">&#125; <span class="keyword">message_base_t</span>;</span><br></pre></td></tr></table></figure>
+
+<p>它等价以下代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> message_groups</span><br><span class="line">&#123;</span><br><span class="line">    INTERNAL_MESSAGE_GROUP &lt;&lt; <span class="number">8</span>,</span><br><span class="line">    AV_MESSAGE_GROUP &lt;&lt; <span class="number">8</span>,                   <span class="comment">/* See #av_status_messages */</span> \                   ................................................................</span><br><span class="line">    LEAKTHROUGH_MESSAGE_GROUP &lt;&lt; <span class="number">8</span>,                <span class="comment">/* See leakthrough_msg_t */</span>\</span><br><span class="line">    QCOM_CON_MANAGER_MESSAGE_GROUP &lt;&lt; <span class="number">8</span>, </span><br><span class="line">    </span><br><span class="line">    HANDSET_SERVICE_MESSAGE_GROUP &lt;&lt; <span class="number">8</span>,</span><br><span class="line">    ............................  </span><br><span class="line">    AUDIO_CURATION_SERVICE_MESSAGE_GROUP &lt;&lt; <span class="number">8</span>,</span><br><span class="line">    </span><br><span class="line">    TWS_TOPOLOGY_SERVICE_MESSAGE_GROUP &lt;&lt; <span class="number">8</span>,     <span class="comment">/* See #tws_topology_message_t */</span> \</span><br><span class="line">    TWS_TOPOLOGY_CLIENT_NOTIFIER_SERVICE_MESSAGE_GROUP &lt;&lt; <span class="number">8</span>, </span><br><span class="line">    HEADSET_TOPOLOGY_SERVICE_MESSAGE_GROUP &lt;&lt; <span class="number">8</span>,</span><br><span class="line">    </span><br><span class="line">    SYSTEM_SERVICE_MESSAGE_GROUP &lt;&lt; <span class="number">8</span>,</span><br><span class="line">    CONN_RULES_SERVICE_MESSAGE_GROUP &lt;&lt; <span class="number">8</span>,</span><br><span class="line">    EARBUD_ROLE_SERVICE_MESSAGE_GROUP &lt;&lt; <span class="number">8</span>,</span><br><span class="line">    </span><br><span class="line">    UI_INPUTS_TELEPHONY_MESSAGE_GROUP &lt;&lt; <span class="number">8</span>,</span><br><span class="line">    .................................</span><br><span class="line">    UI_INPUTS_BOUNDS_CHECK_MESSAGE_GROUP &lt;&lt; <span class="number">8</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ul>
-<h2 id="编译，烧录，输出调试信息"><a href="#编译，烧录，输出调试信息" class="headerlink" title="编译，烧录，输出调试信息"></a>编译，烧录，输出调试信息</h2><ul>
-<li>编译，烧录，输出调试信息全部可以通过MDE完成，步骤见下图所示，烧录的的时候注意，一定要将SYS_CTRL脚拉高hold住。</li>
-</ul>
-<p>![image-20200623222238549](C:\Users\Harry zhang\AppData\Roaming\Typora\typora-user-images\image-20200623222238549.png)</p>
+<h2 id="MESSAGE-BROKER"><a href="#MESSAGE-BROKER" class="headerlink" title="MESSAGE_BROKER"></a>MESSAGE_BROKER</h2><p>有关<code>message_broker</code>官方只有如下说明：</p>
+<blockquote>
+<p>​            The Message Broker allows client modules to register interest<br>​            in System Messages by Message Group. The Message Broker registers<br>​            with the message group owner on behalf of the client module. The<br>​            message group owner subsequently messages the client module directly.<br>​            The message group owner’s messge group ID and registration function<br>​            is provides to message broker in MessageBroker_init().</p>
+</blockquote>
+<p>意思是：<code>message broker</code>允许将感兴趣的<code>message_group</code>注册到系统消息中。</p>
+<p>应该代码中只应用到两个API:</p>
 <ul>
-<li><p>更改log leve ,默认的log level 是2， 即DEBUG_LOG_LEVEL_INFO。 使用的调试输出代码格式：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DEBUG_LOG_INFO(<span class="string">"handleMessageAppInitStart"</span>);</span><br></pre></td></tr></table></figure>
-
-<p>如要改成其他的log level , 则在项目属性中定义宏：SET_LOG_LEVEL=x , x对应以下枚举值：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">enum</span> &#123;</span><br><span class="line">    DEBUG_LOG_LEVEL_ERROR,</span><br><span class="line">    DEBUG_LOG_LEVEL_WARN,</span><br><span class="line">    DEBUG_LOG_LEVEL_INFO,</span><br><span class="line">    DEBUG_LOG_LEVEL_DEBUG,</span><br><span class="line">    DEBUG_LOG_LEVEL_VERBOSE,</span><br><span class="line">    DEBUG_LOG_LEVEL_V_VERBOSE,</span><br><span class="line">&#125; <span class="keyword">debug_log_level_t</span>;</span><br></pre></td></tr></table></figure>
-
-<p>对应的调试代码为：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DEBUG_LOG_ERROR(...)     </span><br><span class="line">DEBUG_LOG_WARN(...)      </span><br><span class="line">DEBUG_LOG_INFO(...)      </span><br><span class="line">DEBUG_LOG_DEBUG(...)     </span><br><span class="line">DEBUG_LOG_VERBOSE(...)   </span><br><span class="line">DEBUG_LOG_V_VERBOSE(...)</span><br></pre></td></tr></table></figure>
-
-<p>至此，你已经可以拿到板子正常运行程序，并且进行代码调试了。</p>
+<li>MessageBroker_Init() </li>
+</ul>
+<p>代码中该代码中的涉及的参数<code>message_broker_group_registrations_end[]</code>和<code>message_broker_group_registrations_begain[]</code>具体定义都不可见。所以 <code>MessageGroupRegister</code></p>
+<p>和<code>MessageGroupUnregister</code> 两个函数的定义也未知。</p>
+<ul>
+<li>void MessageBroker_RegisterInterestInMsgGroups(Task task, const message_group_t* msg_groups, unsigned num_groups)</li>
+</ul>
+<p><code>num_groups</code>是指在<code>*msg_groups</code>为第一个<code>message_group</code>,在此基础上的几个<code>message_group</code>.</p>
+<p>此函数最后要调用<code>registration-&gt;MessageGroupRegister(task, group)</code> ，但由于<code>MessageGroupRegister</code>的具体定义未知，所以也无从查询它究竟做了什么.</p>
+<ul>
+<li><strong>疑问?</strong></li>
+</ul>
+<p>message_broker的具体怎么应用，目前尚未知道，在后续的代码中希望可以找到答案。</p>
+<h2 id="Tasklist-application"><a href="#Tasklist-application" class="headerlink" title="Tasklist application"></a>Tasklist application</h2><p>task list 中应用到的结构体如下图所示：</p>
+<p>![](QCC MDE 开发初窥(二)/task_list_struct.png)<img src="/2020/07/04/QCC%20MDE%20%E5%BC%80%E5%8F%91%E5%88%9D%E7%AA%A5(%E4%BA%8C)/task_list_struct.png" class title="nn"></p>
+<ul>
+<li><p>创建task list </p>
+<ul>
+<li>动态的task list : TaskList_Create()</li>
+<li>静态的task list : TaskList_Initralise()， 它设置</li>
+</ul>
+<p>目前代码中，两者创建的容量都是1，唯一区别就是<code>no_destroy</code>的赋值不一样，动态赋值：<code>false</code>, 静态赋值<code>TRUE</code> </p>
+</li>
+<li><p>TaskList_AddTask(), 一般在register一个task的时候就需要该操作</p>
+</li>
+<li><p>使用过程中，就可以利用task list 来发送消息：Tasklist_MessageSendId()</p>
+</li>
+<li><p>动态创建tasklist后，unresgister 一个task的时候：</p>
+<ul>
+<li>TaskList_RemoveTask()</li>
+<li>通过TaskList_Size()判断 task 是否为零，如果等于零，则TaskList_Destroy()</li>
+</ul>
 </li>
 </ul>
 
@@ -347,7 +367,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yoursite.com/2020/06/24/QCC%20MDE%20%E5%BC%80%E5%8F%91%E5%88%9D%E7%AA%A5(%E4%B8%80)/" title="QCC MDE 开发初窥（一）">http://yoursite.com/2020/06/24/QCC MDE 开发初窥(一)/</a>
+    <a href="http://yoursite.com/2020/07/04/QCC%20MDE%20%E5%BC%80%E5%8F%91%E5%88%9D%E7%AA%A5(%E4%BA%8C)/" title="QCC MDE 开发初窥(二)">http://yoursite.com/2020/07/04/QCC MDE 开发初窥(二)/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -366,11 +386,11 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2020/06/26/Hexo%20user%20guide/" rel="next" title="Hexo user guide">
-      Hexo user guide <i class="fa fa-chevron-right"></i>
+    <a href="/2020/06/27/Markdwon%20%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/" rel="prev" title="Markdwon 常用语法">
+      <i class="fa fa-chevron-left"></i> Markdwon 常用语法
     </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -430,7 +450,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#QCC-MDE-开发初窥-一"><span class="nav-number">1.</span> <span class="nav-text">QCC MDE 开发初窥(一)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发环境安装"><span class="nav-number">1.2.</span> <span class="nav-text">开发环境安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发环境配置和TRBI200连线"><span class="nav-number">1.3.</span> <span class="nav-text">开发环境配置和TRBI200连线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编译，烧录，输出调试信息"><span class="nav-number">1.4.</span> <span class="nav-text">编译，烧录，输出调试信息</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MESSAGE-BASE-amp-MESSAGE-GROUP"><span class="nav-number">2.</span> <span class="nav-text">MESSAGE_BASE &amp; MESSAGE_GROUP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MESSAGE-BROKER"><span class="nav-number">3.</span> <span class="nav-text">MESSAGE_BROKER</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tasklist-application"><span class="nav-number">4.</span> <span class="nav-text">Tasklist application</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
