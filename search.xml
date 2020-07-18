@@ -226,4 +226,148 @@
         <tag>technology</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Linux &amp; Android study(2):Uboot和Linux内核编译</title>
+    <url>/2020/07/17/linux&amp;Android_study_note(2)-Uboot%E5%92%8CLinux%E5%86%85%E6%A0%B8%E7%BC%96%E8%AF%91%EF%BC%882%EF%BC%89/</url>
+    <content><![CDATA[<p>[TOC]</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>熟悉完了Linux的基本操作后，接下来就是配置编译器，编译uboot和Linux内核，编译linux驱动程式</p>
+<a id="more"></a>
+
+<h2 id="配置NFS"><a href="#配置NFS" class="headerlink" title="配置NFS"></a>配置NFS</h2><ul>
+<li>安装NFS服务期</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install nfs-kernel-server</span><br><span class="line">sudo apt-get install nfs-common</span><br><span class="line">sudo apt-get install rpcbind</span><br><span class="line">sudo vim /etc/exports</span><br></pre></td></tr></table></figure>
+
+<p>在<code>/etc/exports</code>中增加以下行</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">/home/harry/work/nfs_root *(rw,sync,no_root_squash)</span><br></pre></td></tr></table></figure>
+
+<p>保存退出后，执行：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo exportfs -r</span><br><span class="line">exportfs: /etc/exports [1]: Neither 'subtree_check' or 'no_subtree_check' specified for export "*:/home/harry/work/nfs_root".</span><br><span class="line">  Assuming default behaviour ('no_subtree_check').</span><br><span class="line">  NOTE: this default has changed since nfs-utils version 1.0.x</span><br></pre></td></tr></table></figure>
+
+<p>重新启动<code>nfs</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">nfs-kernel-server restart</span><br></pre></td></tr></table></figure>
+
+<p>测试NFS :</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo mount -t nfs local_ip:/home/harry/work/nfs_root /mnt</span><br><span class="line">ls /mnt/</span><br></pre></td></tr></table></figure>
+
+<p>果<code>/mnt</code>下有共享文件<code>/home/harry/work/nfs_root</code>的文件内容，则挂载成功</p>
+<p>卸载</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo umount -t nfs local_ip:/home/harry/work/nfs_root /mnt</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>technology</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux study note (1)</title>
+    <url>/2020/07/12/linux&amp;Android_study_note(1)-Linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</url>
+    <content><![CDATA[<p>[TOC]</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近开始要开搞bluedroid 蓝牙协议栈，所以拿出以前买回的JZ2440 开发板，开始重新学习Linux &amp; androdi driver开发，在这里记录每次学习的点滴</p>
+<a id="more"></a>
+
+<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p>需要安装如下软件：</p>
+<ul>
+<li>Ubuntu 20.4 iso 镜像文件</li>
+<li>Vmware Workstation pro , 收费，但是注册码一搜大把</li>
+<li>SecureCRT 8.5 , 需破解</li>
+<li>CuteFTP 9.0.5.0007, 最新版本9.3.0.3 找不到破解文件</li>
+</ul>
+<blockquote>
+<p>注： MobaXterm 软件可以同时替代SecureCRT和CuteFTP, 免费版据说可以满足需求，暂未使用</p>
+</blockquote>
+<h2 id="Linux常用指令"><a href="#Linux常用指令" class="headerlink" title="Linux常用指令"></a>Linux常用指令</h2><ul>
+<li>rm</li>
+</ul>
+<blockquote>
+<p> sudo rm -rf file_name</p>
+</blockquote>
+<p>注解： r: 递归删除  ； f: force 执行</p>
+<ul>
+<li>mkdir</li>
+</ul>
+<blockquote>
+<p>sudo mkdir filename</p>
+</blockquote>
+<p>创建新的文件夹</p>
+<ul>
+<li><p>pwd/cd/ls</p>
+</li>
+<li><p>tar xjf file_name: 解压缩 ；tar cjf filename 压缩文件</p>
+</li>
+<li><p>cat file_name： 查看文件</p>
+</li>
+<li><p>patch -p1 &lt;../路径： p1: 打开patch文件，1的意思是就是将路径的第一段忽略，例如,如果当前已经在路径u-boot-1.1.6 的时候，就不需要<strong>u-boot-1.1.6/</strong>这一段路径，就使用<strong>-P1</strong>：</p>
+<blockquote>
+<p> — u-boot-1.1.6/Makefile       2006-11-02 22:15:01.000000000 +0800</p>
+</blockquote>
+</li>
+<li><p>复制/剪贴/更改名字</p>
+<blockquote>
+<p>mv a.c b.c  : 更改名字</p>
+<p>mv a.c b.c  : 移动文件</p>
+<p>cp  a/b/* a/c : 将b文件下的内容复制到a/c下面</p>
+<p>cp  a/b  a/c ： 将b文件拷贝到a/c下面，b文件作为子文件</p>
+</blockquote>
+</li>
+<li><p>查找 </p>
+<blockquote>
+<p>find -name “关键词”</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="vim常用操作"><a href="#vim常用操作" class="headerlink" title="vim常用操作"></a>vim常用操作</h2><ul>
+<li><p>块操作</p>
+<blockquote>
+<p>ctrl+v, 左右上下移动即可任意位置， 选择之后按y,在指定光标出按p， 如果是删除则是按x</p>
+</blockquote>
+</li>
+<li><p>转到某一行使用命令：</p>
+<blockquote>
+<p>:行号 ，例如：转到100行。 ：100</p>
+</blockquote>
+</li>
+<li></li>
+</ul>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>technology</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Life of IT GUY</title>
+    <url>/2020/07/14/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/</url>
+    <content><![CDATA[<p>[TOC]</p>
+<h2 id="Introduce-myself"><a href="#Introduce-myself" class="headerlink" title="Introduce myself"></a>Introduce myself</h2><p>Hi, my name is Harry Zhang. I come from a small county of hunan hengyang ,  People in my hometown like eating rice noodles very much, example: marinated rice noddles,  fish soup type ,  <strong>agaric and meat</strong> type. they are delicious but spicy. I have left my homtown about 18 years ,and  I have been a  embedded software engineer  for 14 years .What is embedded software engineer?IT doesn’t matter if you don’t understand, you can call me “IT guy”.  I am going to talk about life of IT GUY. When people heard the word “IT guy”, they may have these impression .</p>
+<h2 id="IT-guys-have-poor-body-image"><a href="#IT-guys-have-poor-body-image" class="headerlink" title="IT guys have poor body image."></a>IT guys have poor body image.</h2><p>they always carry a backpack .  wear checked shirt and jeans ,  have a few har ,even <strong>bald</strong> ,look tired.  Indeed ,this is the state of some IT guys, but not all. why? this wearing type is  simple and comfortable .many IT guys are dressed like this , so it infects more and more IT guys .   IT GUYS usually work a lot of overtime  and stay up late ,leaving office after nine o’clock is norm, so they do not get enough sleep . you can see many these people in hua wei , oppo , vivo </p>
+<h2 id="IT-guys-are-indoorsman"><a href="#IT-guys-are-indoorsman" class="headerlink" title="IT guys are indoorsman"></a>IT guys are indoorsman</h2><p> IT GUYS  lack sense of humor, have a few friends, like to think independently .In spare time, IT guys want to have more rest and do what they want to do at home , such as games, comics, movies and so on. Also some of IT guys at home  learn new knowledge, do some open source project on github .they usually don’t say no when someone invites us out. Actually , IT guys also want to be more open .</p>
+<h2 id="IT-guy-are-the-people-who-fix-computer"><a href="#IT-guy-are-the-people-who-fix-computer" class="headerlink" title="IT guy are the people who fix computer ."></a>IT guy are the people who fix computer .</h2><p>I must say the definition of IT guys. it guys use computers to achieve a purpose or solve a problem. They write program code through some programming language, so computer just is the tool it guys use every day .it guys are programmer,  It’s not fixing computers.  of cource , Because computers is IT GUY ‘S close friend, so we can basically deal with some small problems of computers, such as installation of the system, drive installation, replace computer accessories .if we met big issue, we also ask the professional for help .</p>
+<h2 id="IT-guys-are-not-good-at-communicating-with-people"><a href="#IT-guys-are-not-good-at-communicating-with-people" class="headerlink" title="IT guys are not good at communicating with people"></a>IT guys are not good at communicating with people</h2><p>IT guy’ thinking is usually  systematic and logical.people ‘s relationships are not only  true or false, the objective factors also are one of the major component. Actually it is not that IT guys are bad at making changes, but that they don’t care to make the change. Fewer people ‘s raltionship can help IT GUYS focus more on technology . of course ,if IT GUYS want to change ,they would be successful ,</p>
+<h2 id="IT-guys-also-have-positive-side"><a href="#IT-guys-also-have-positive-side" class="headerlink" title="IT guys also have positive side"></a>IT guys also have positive side</h2><ul>
+<li>IT guys also can be cool and homorous. Popular talk show Actor 庞博， he is  TI guye. </li>
+</ul>
+<p>famous car critic  陈震，i like to watch his video . he used to be a  TI GUYS. </p>
+<ul>
+<li><p>The programmer’s learning ability is strong, if he can expand his ability . the potential is infinite</p>
+</li>
+<li><p>IT GUYS are well paid . average pay is higher than other industries.</p>
+</li>
+<li><p>IT GUYS has many small skills, for example ,me , i can build my person blog by myself , share my technology to other people . write article used markdown language. it  type article quickly .  i like use the mind mapping to note my knowledge . it stucture  your knowledge. I recommend  mindmanger . </p>
+</li>
+</ul>
+<p>This is IT guy  ,i am proud .</p>
+]]></content>
+      <categories>
+        <category>english</category>
+      </categories>
+      <tags>
+        <tag>english</tag>
+      </tags>
+  </entry>
 </search>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-07-05T10:18:14.203Z</updated>
+  <updated>2020-07-18T02:12:15.680Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,78 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux &amp; Android study(2):Uboot和Linux内核编译</title>
+    <link href="http://yoursite.com/2020/07/17/linux&amp;Android_study_note(2)-Uboot%E5%92%8CLinux%E5%86%85%E6%A0%B8%E7%BC%96%E8%AF%91%EF%BC%882%EF%BC%89/"/>
+    <id>http://yoursite.com/2020/07/17/linux&amp;Android_study_note(2)-Uboot%E5%92%8CLinux%E5%86%85%E6%A0%B8%E7%BC%96%E8%AF%91%EF%BC%882%EF%BC%89/</id>
+    <published>2020-07-17T14:44:37.048Z</published>
+    <updated>2020-07-18T02:12:15.680Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;熟悉完了Linux的基本操作后，接下来就是配置编译器，编译uboot和Linux内核，编译linux驱动程式&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="http://yoursite.com/categories/linux/"/>
+    
+    
+      <category term="technology" scheme="http://yoursite.com/tags/technology/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Life of IT GUY</title>
+    <link href="http://yoursite.com/2020/07/14/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/"/>
+    <id>http://yoursite.com/2020/07/14/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/</id>
+    <published>2020-07-14T00:24:51.897Z</published>
+    <updated>2020-07-18T05:10:37.287Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h2 id=&quot;Introduce-myself&quot;&gt;&lt;a href=&quot;#Introduce-myself&quot; class=&quot;headerlink&quot; title=&quot;Introduce myself&quot;&gt;&lt;/a&gt;Introduce
+        
+      
+    
+    </summary>
+    
+    
+      <category term="english" scheme="http://yoursite.com/categories/english/"/>
+    
+    
+      <category term="english" scheme="http://yoursite.com/tags/english/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux study note (1)</title>
+    <link href="http://yoursite.com/2020/07/12/linux&amp;Android_study_note(1)-Linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/"/>
+    <id>http://yoursite.com/2020/07/12/linux&amp;Android_study_note(1)-Linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</id>
+    <published>2020-07-12T13:12:09.085Z</published>
+    <updated>2020-07-17T15:31:20.386Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;最近开始要开搞bluedroid 蓝牙协议栈，所以拿出以前买回的JZ2440 开发板，开始重新学习Linux &amp;amp; androdi driver开发，在这里记录每次学习的点滴&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="http://yoursite.com/categories/linux/"/>
+    
+    
+      <category term="technology" scheme="http://yoursite.com/tags/technology/"/>
+    
+  </entry>
   
   <entry>
     <title>QCC MDE 开发初窥(二)</title>
