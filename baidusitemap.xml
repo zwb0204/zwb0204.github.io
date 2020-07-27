@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://yoursite.com/2020/07/27/adb_logcat_user%20guide/</loc>
+    <lastmod>2020-07-27</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/2020/07/27/adb_%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8%E5%A4%A7%E5%85%A8/</loc>
+    <lastmod>2020-07-27</lastmod>
+  </url>  <url>
     <loc>http://yoursite.com/2020/07/14/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E7%94%9F%E6%B4%BB/</loc>
-    <lastmod>2020-07-18</lastmod>
+    <lastmod>2020-07-20</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/2020/07/17/linux&Android_study_note(2)-Uboot%E5%92%8CLinux%E5%86%85%E6%A0%B8%E7%BC%96%E8%AF%91%EF%BC%882%EF%BC%89/</loc>
     <lastmod>2020-07-18</lastmod>
