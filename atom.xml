@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-07-27T14:14:31.173Z</updated>
+  <updated>2020-09-24T13:19:22.579Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>c++ 视频学习note</title>
+    <link href="http://yoursite.com/2020/09/24/c++-%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0note/"/>
+    <id>http://yoursite.com/2020/09/24/c++-%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0note/</id>
+    <published>2020-09-24T13:14:55.397Z</published>
+    <updated>2020-09-24T13:19:22.579Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h2 id=&quot;约定&quot;&gt;&lt;a href=&quot;#约定&quot; class=&quot;headerlink&quot; title=&quot;约定&quot;&gt;&lt;/a&gt;约定&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;类的首字母要大写&lt;/li&gt;
+&lt;li&gt;this
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>ADB 命令使用大全</title>

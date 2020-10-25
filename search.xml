@@ -439,4 +439,14 @@
         <tag>english</tag>
       </tags>
   </entry>
+  <entry>
+    <title>c++ 视频学习note</title>
+    <url>/2020/09/24/c++-%E8%A7%86%E9%A2%91%E5%AD%A6%E4%B9%A0note/</url>
+    <content><![CDATA[<p>[TOC]</p>
+<h2 id="约定"><a href="#约定" class="headerlink" title="约定"></a>约定</h2><ul>
+<li>类的首字母要大写</li>
+<li>this 是指当前对象</li>
+</ul>
+]]></content>
+  </entry>
 </search>
